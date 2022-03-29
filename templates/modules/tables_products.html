@@ -1,0 +1,41 @@
+<table class="table table-bordered" id="productsTable">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Product Name</th>
+            <th>Category</th>
+            <th>Entries</th>
+            <th>Orders</th>
+            <th>Balance</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% if products|length < 1 %}
+        <tr>
+        <td colspan="9" class="text-center">No data found, please add some data!</td>
+        </tr>
+    {% else %}
+        {% for product in products %}
+            <tr>
+                <td>{{ product.date }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.category }}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                   <!-- <button class="btn btn-danger" id="btn-delete" data-url="#" data-toggle="modal"
+                                data-target="#removeCategoryModal">
+                        <span class="glyphicon glyphicon-trash"></span>
+                        Delete
+                    </button> -->
+                    <button class="btn btn-info show-form-delete" id="btn-update" data-url="#">
+                        <span class="glyphicon glyphicon-trash"></span>
+                        Edit
+                    </button>
+                </td>
+            </tr>
+        {% endfor %}
+    {% endif %}
+    </tbody>
+</table>
