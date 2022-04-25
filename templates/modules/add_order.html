@@ -1,10 +1,10 @@
 <form class="form create-form" autocomplete="off" method="post" enctype="multipart/form-data">
     <div class="form-group">
-        <label for="productName">Name</label>
+        <label for="productName">Employee</label>
         <input type="text" class="form-control" name="name" required="" autocomplete="off">
     </div>
     <div class="form-group">
-        <label for="productCategory">Category</label>
+        <label for="productCategory">Product</label>
         <select class="form-control" name="category">
             <option value="">SELECT</option>
             {% for category in categories %}
@@ -32,13 +32,6 @@
     <div class="form-group">
         <label for="productName">Quantity</label>
         <input type="text" class="form-control" name="quantity" required="" autocomplete="off">
-    </div>
-    <div class="form-group">
-        <label for="weight">Weight</label>
-        <select class="form-control" name="weight">
-            <option value="1">Box/Carton</option>
-            <option value="1">Pieces</option>
-        </select>
     </div>
     <!-- <div class="form-group">
         <label for="productName">Rate</label>

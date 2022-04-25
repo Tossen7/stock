@@ -1,24 +1,24 @@
  <nav class="navbar navbar-toggleable-lg" style="background-color: white; box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.2), 0 2px 20px 0 rgba(0, 0, 0, 0.19)">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="color: rgb(253, 255, 253);">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="nav navbar-nav ml-auto" style="color: green;">
+                <ul class="nav navbar-nav ml-auto" style="color: rgb(248, 252, 248);">
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'dashboard' %}" style="color: green;"><i class="fa fa-list-alt" aria-hidden="true"></i> Dashboard</a>
                     </li>
                     <li class="nav-item" id="navBrand">
-                        <a class="nav-link" href="{% url 'products' %}" style="color: green; ><i class="fa fa-gamepad" aria-hidden="true"></i></i> Products</a>
+                        <a class="nav-link" href="{% url 'products' %}" style="color: green;" ><i class="fa fa-gamepad" aria-hidden="true"></i></i> Products</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'categories' %}" style="color: green;><i class="fa fa-list" aria-hidden="true"></i> Categories</a>
+                        <a class="nav-link" href="{% url 'categories' %}" style="color: green;"><i class="fa fa-list" aria-hidden="true"></i> Categories</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'orders' %}" style="color: green;><i class="fa fa-cubes" aria-hidden="true"></i></i> Orders</a>
+                        <a class="nav-link" href="{% url 'orders' %}" style="color: green;"><i class="fa fa-cubes" aria-hidden="true"></i></i> Orders</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'report' %}" style="color: green;><i class="fa fa-line-chart" aria-hidden="true"></i></i> Report</a>
+                        <a class="nav-link" href="{% url 'report' %}" style="color: green;"><i class="fa fa-line-chart" aria-hidden="true"></i></i> Report</a>
                     </li>
                 </ul> 
                 {% if user.is_authenticated %}

@@ -34,6 +34,7 @@ class Product(models.Model):
 	date = models.DateField(auto_now_add=True)
 	category = models.ForeignKey(Category, on_delete=models.CASCADE)
 	name = models.CharField(max_length=255)
+	description = models.CharField(max_length = 255, default = "None")
 	# image = models.ImageField(upload_to="media/product/images/")
 	quantity = models.IntegerField(default=0)
 	weight = models.CharField(max_length=10, choices = WEIGHT, default=1)
@@ -44,9 +45,9 @@ class Product(models.Model):
 
 
 class Member(models.Model):
-	firstname = models.CharField(max_length=250)
-	lastname = models.CharField(max_length=250)
-	username = models.CharField(max_length=250)
+	firstname = models.CharField(max_length=250, default="Tharcisse")
+	lastname = models.CharField(max_length=250, default="MUNYANEZA")
+	username = models.CharField(max_length=250, default="Tossen")
 	profile_pic = models.ImageField(default = 'dark-souls.jpg', upload_to = 'media')
 	email = models.EmailField()
 	password = models.CharField(max_length=250, null=False)
@@ -62,6 +63,9 @@ class Order(models.Model):
 	product = models.ForeignKey(Product, on_delete=models.CASCADE, default=1)
 	number = models.IntegerField()
 	date = models.DateField(auto_now_add=True)
+
+	def __str__(self) -> str:
+		return self.user
 
 
 class OrderItem(models.Model):

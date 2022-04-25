@@ -1,4 +1,5 @@
 from cgitb import html
+from functools import total_ordering
 from xml.dom import ValidationErr
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -91,12 +92,9 @@ def create_product(request):
 		print(request.FILES)
 		Product.objects.create(
 			name=request.POST["name"],
-			brand=Brand.objects.get(id=request.POST["brand"]),
 			category=Category.objects.get(id=request.POST["category"]),
-			code=request.POST["code"],
 			quantity=request.POST["quantity"],
-			rate=request.POST["rate"],
-			status=request.POST["status"],
+			weight = request.POST["weight"],
 		)
 		products_lists = Product.objects.all()
 		data['html'] = render_to_string('modules/tables_products.html', {"products": products_lists})
@@ -108,15 +106,47 @@ def products_list(request):
 	html = render_to_string('modules/tables_products.html', {"products": products_lists})
 	return JsonResponse({"message": "Ok", "html": html})
 
-@login_required(login_url="/account/signin/")
-def orders(request):
-	return render(request, "orders.html", {})
-
 
 @login_required(login_url="/account/signin/")
 def report(request):
 	return render(request, "report.html", {})
 
+
+@login_required(login_url="/account/signin/")
+@csrf_exempt
+def orders(request):
+	orders_list = Order.objects.all()
+	return render(request, "orders.html")
+
+@csrf_exempt
+def create_order(request):
+	data = dict()
+	if request.method == "GET":
+		users_lists = User.objects.all()
+		products_lists = Product.objects.all()
+		data['html'] = render_to_string('modules/add_order.html', {"users": users_lists, "products": products_lists})
+	else:
+		print(request.FILES)
+		Order.objects.create(
+			user = User.objects.get(id=request.POST["user"]),
+			product = Product.objects(id = request.POST["product"]),
+			number = request.POST["number"],
+		)
+		orders_lists = Order.objects.all()
+		data['html'] = render_to_string('modules/order_list.html', {"orders": orders_lists})
+	return JsonResponse(data)
+
+
+
+@csrf_exempt
+def orders_list(request):
+	order_lists = Order.objects.all()
+	html = render_to_string('modules/order_list.html', {"orders": order_lists})
+	return JsonResponse({"message": "Ok", "html": html})
+
+
+	
+@login_required(login_url="/account/signin/")
 @csrf_exempt
 def create_brand(request):
 	data = dict()

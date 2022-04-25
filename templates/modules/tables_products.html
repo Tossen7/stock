@@ -4,9 +4,9 @@
             <th>Date</th>
             <th>Product Name</th>
             <th>Category</th>
-            <th>Entries</th>
-            <th>Orders</th>
-            <th>Balance</th>
+          <!--  <th>Entries</th>
+            <th>Orders</th> -->
+            <th>Number</th>
         </tr>
     </thead>
     <tbody>
@@ -20,20 +20,19 @@
                 <td>{{ product.date }}</td>
                 <td>{{ product.name }}</td>
                 <td>{{ product.category }}</td>
+                <td>{{ product.quantity }}</td>
                 <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                   <!-- <button class="btn btn-danger" id="btn-delete" data-url="#" data-toggle="modal"
+               <!--  <td>
+                   <button class="btn btn-danger" id="btn-delete" data-url="#" data-toggle="modal"
                                 data-target="#removeCategoryModal">
                         <span class="glyphicon glyphicon-trash"></span>
                         Delete
-                    </button> -->
+                    </button> 
                     <button class="btn btn-info show-form-delete" id="btn-update" data-url="#">
                         <span class="glyphicon glyphicon-trash"></span>
                         Edit
-                    </button>
-                </td>
+                    </button> 
+                </td> -->
             </tr>
         {% endfor %}
     {% endif %}
